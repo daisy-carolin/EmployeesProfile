@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student list</title>
+</head>
+<body>
+    <style>
+        tr{
+            color: purple;
+        }
+        td{
+            color: black;
+        }
+        body{
+            background-color: beige;
+           
+        }
+        table{
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    table-layout:auto;
+}
+table,tr,th,td{
+    padding: 20px;
+    color: rgb(10, 154, 190);
+    border: 1px solid rgb(6, 61, 99);
+    border-collapse: collapse;
+    font-size: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', ;
+    background: linear-gradient(top,rgb(130, 238, 229) 0%,rgb(145, 241, 212) 100%);
+    text-align: center;
+    margin-top: 40px;
+}
+
+td:hover{
+    background: rgb(148, 206, 253) ;
+}
+h1{
+    text-align: center;
+    color: rgb(82, 226, 226);
+    padding-top: 10%;
+}
+ img{
+     width:40px;
+     height:50px;
+ }
+    </style>
+    <table>
+        <tr>
+             <th>Image</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Email Adress</th>
+            <th>Nationality</th>
+            <th>Employee Id</th>
+            <th>Id Number</th>
+            <th>Gender</th>
+            <th>Phone Number</th>
+            <th>Language</th>
+            <th>Profile</th>
+            <th>Edit</th>
+             </tr>
+            <tr>
+
+            {% for employee in employees %}
+            {% if employee.image %}
+            <td><img src="{{employee.image.url}}"></td>
+            {% endif %}
+            <td>{{employee.first_name}}</td>
+            <td>{{employee.last_name}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.date_of_birth}}</td>
+            <td>{{employee.email_adress}}</td>
+            <td>{{employee.nationality}}</td>
+            <td>{{employee.id_number}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.phone_number}}</td>
+            <td>{{employee.languages}}</td>
+            <td><a href="{% url 'employee_profile' id=employee.id%}">Profile<a/></td>
+            <td><a href="{% url 'edit_employee' id=employee.id%}">Edit<a/></td>
+
+
+        </tr>
+        {%endfor%}
+    </table>
+   
+</body>
+</html>
